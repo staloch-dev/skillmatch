@@ -2,6 +2,7 @@ const candidato = {
   nome: "Jaison Staloch Junior",
   areaInteresse: "Desenvolvimento Full Stack",
   nivel: "Júnior",
+  idioma: "Inglês Técnico",
   habilidades: [
     "Java",
     "Spring Boot",
