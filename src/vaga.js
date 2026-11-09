@@ -15,17 +15,31 @@ class Vaga {
   }
 
   compararRequisitos(habilidades) {
-    const possui = [];
-    const falta = [];
+    const habilidadesLower = habilidades.map(h => h.toLowerCase());
 
-    this.requisitos.forEach((requisito) => {
-      const encontrado = habilidades.find(
-        (habilidade) => habilidade.toLowerCase() === requisito.toLowerCase()
-      );
+    const possui = this.requisitos.filter(
+      (requisito) => habilidadesLower.includes(requisito.toLowerCase())
+    );
 
-      encontrado ? possui.push(requisito) : falta.push(requisito);
-    });
+    const falta = this.requisitos.filter(
+      (requisito) => !habilidadesLower.includes(requisito.toLowerCase())
+    );
 
+    const percentualAderencia = this.requisitos.length > 0
+      ? (possui.length / this.requisitos.length) * 100
+      : 100;
+
+    let faixaCompatibilidade;
+    if (percentualAderencia >= 70) {
+      faixaCompatibilidade = "Alta";
+    } else if (percentualAderencia >= 50){
+      faixaCompatibilidade = "Média";
+    } else {
+      faixaCompatibilidade = "Baixa";
+    }
+
+    console.log(`Aderência: ${percentualAderencia.toFixed(1)}% | Compatibilidade: ${faixaCompatibilidade}`);
+    
     console.log(
       possui.length > 0
         ? `Requisitos atendidos: ${possui.join(", ")}.`
