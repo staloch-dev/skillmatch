@@ -12,10 +12,10 @@ class VagaInternacional extends Vaga {
     console.log(`Vaga Internacional #${this.id}: ${this.titulo} na ${this.empresa} (${this.nivel}) - Local: ${this.pais} | Idioma: ${this.idiomaExigido} | Salário Base: ${this.salarioBase.toFixed(2)} ${this.moeda} | Requisitos: ${this.requisitos.join(", ")}`);
   }
 
-  compararRequisitos(habilidadesCandidato) {
-    super.compararRequisitos(habilidadesCandidato);
+  compararRequisitos(habilidades) {
+    super.compararRequisitos(habilidades);
 
-    const atendeIdioma = habilidadesCandidato.includes(this.idiomaExigido);
+    const atendeIdioma = habilidades.includes(this.idiomaExigido);
     console.log(atendeIdioma
         ? `Idioma: O candidato possui proficiência em ${this.idiomaExigido}.`
         : `Idioma: O candidato precisa de proficiência em ${this.idiomaExigido}.`

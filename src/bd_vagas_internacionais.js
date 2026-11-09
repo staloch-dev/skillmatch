@@ -70,7 +70,7 @@ const vagasInternacionais = [
     titulo: "Remote Java Backend Developer",
     empresa: "DevOps Global Networks",
     nivel: "Júnior",
-    requisitos: ["Java", "Spring Boot", "REST API", "SQL", "Git"],
+    requisitos: ["Java", "Spring Boot", "APIs Rest", "SQL", "Git"],
     salarioBase: 4200.00,
     pais: "Estados Unidos",
     moeda: "USD",

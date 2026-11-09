@@ -14,32 +14,39 @@ class Vaga {
     );
   }
 
-  compararRequisitos(habilidades) {
-    const habilidadesLower = habilidades.map(h => h.toLowerCase());
+  calcularPercentualAderencia(habilidades) {
+    const habilidadesLower = habilidades.map((h) => h.toLowerCase());
 
-    const possui = this.requisitos.filter(
-      (requisito) => habilidadesLower.includes(requisito.toLowerCase())
+    const possui = this.requisitos.filter((requisito) =>
+      habilidadesLower.includes(requisito.toLowerCase())
     );
 
     const falta = this.requisitos.filter(
       (requisito) => !habilidadesLower.includes(requisito.toLowerCase())
     );
 
-    const percentualAderencia = this.requisitos.length > 0
+    const percentual = this.requisitos.length > 0
       ? (possui.length / this.requisitos.length) * 100
       : 100;
 
-    let faixaCompatibilidade;
-    if (percentualAderencia >= 70) {
-      faixaCompatibilidade = "Alta";
-    } else if (percentualAderencia >= 50){
-      faixaCompatibilidade = "Média";
+    let faixa;
+    if (percentual >= 80) {
+      faixa = "Alta";
+    } else if (percentual >= 50) {
+      faixa = "Média";
     } else {
-      faixaCompatibilidade = "Baixa";
+      faixa = "Baixa";
     }
 
-    console.log(`Aderência: ${percentualAderencia.toFixed(1)}% | Compatibilidade: ${faixaCompatibilidade}`);
-    
+    return { possui, falta, percentual, faixa, elegivel: true };
+  }
+
+  compararRequisitos(habilidades) {
+    const { possui, falta, percentual, faixa } =
+      this.calcularPercentualAderencia(habilidades);
+
+    console.log(`Aderência: ${percentual.toFixed(1)}% | Compatibilidade: ${faixa}`);
+
     console.log(
       possui.length > 0
         ? `Requisitos atendidos: ${possui.join(", ")}.`
