@@ -26,6 +26,21 @@ class Vaga {
       encontrado ? possui.push(requisito) : falta.push(requisito);
     });
 
+    const percentualAderencia = this.requisitos.length > 0
+      ? (possui.length / this.requisitos.length) * 100
+      : 100;
+
+    let faixaCompatibilidade;
+    if (percentualAderencia >= 70) {
+      faixaCompatibilidade = "Alta";
+    } else if (percentualAderencia >= 50){
+      faixaCompatibilidade = "Média";
+    } else {
+      faixaCompatibilidade = "Baixa";
+    }
+
+    console.log(`Aderência: ${percentualAderencia.toFixed(1)}% | Compatibilidade: ${faixaCompatibilidade}`);
+    
     console.log(
       possui.length > 0
         ? `Requisitos atendidos: ${possui.join(", ")}.`
