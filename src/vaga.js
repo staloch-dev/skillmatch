@@ -15,16 +15,15 @@ class Vaga {
   }
 
   compararRequisitos(habilidades) {
-    const possui = [];
-    const falta = [];
+    const habilidadesLower = habilidades.map(h => h.toLowerCase());
 
-    this.requisitos.forEach((requisito) => {
-      const encontrado = habilidades.find(
-        (habilidade) => habilidade.toLowerCase() === requisito.toLowerCase()
-      );
+    const possui = this.requisitos.filter(
+      (requisito) => habilidadesLower.includes(requisito.toLowerCase())
+    );
 
-      encontrado ? possui.push(requisito) : falta.push(requisito);
-    });
+    const falta = this.requisitos.filter(
+      (requisito) => !habilidadesLower.includes(requisito.toLowerCase())
+    );
 
     const percentualAderencia = this.requisitos.length > 0
       ? (possui.length / this.requisitos.length) * 100
