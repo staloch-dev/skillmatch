@@ -30,7 +30,7 @@ class Vaga {
       : 100;
 
     let faixaCompatibilidade;
-    if (percentualAderencia >= 70) {
+    if (percentualAderencia >= 80) {
       faixaCompatibilidade = "Alta";
     } else if (percentualAderencia >= 50){
       faixaCompatibilidade = "Média";
@@ -39,7 +39,7 @@ class Vaga {
     }
 
     console.log(`Aderência: ${percentualAderencia.toFixed(1)}% | Compatibilidade: ${faixaCompatibilidade}`);
-    
+
     console.log(
       possui.length > 0
         ? `Requisitos atendidos: ${possui.join(", ")}.`
